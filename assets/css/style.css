@@ -1,0 +1,21 @@
+.hide-letter {
+    display: none;    
+}
+
+.letter-container {
+    margin: 2px;
+    display: flex;
+}
+
+#answer {
+    display: flex;
+    justify-content: center;
+}
+
+.under-letter {
+    position: absolute;
+}
+
+#winner {
+    display: none;
+}

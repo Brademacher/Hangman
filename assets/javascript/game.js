@@ -13,16 +13,17 @@ function initializeGame() {
     answerContainer.innerHTML = "";
     for (var i = 0; i < gameWord.length; i++) {
         var letter = gameWord[i];
-        var upperLetter = letter.toUpperCase();
-        answerLetters[upperLetter] = true;
+        var upperLetter = letter.toUpperCase(); 
+        answerLetters[upperLetter] = true;  //making sure all cases of letter work
         var letterDiv = document.createElement('div');
         letterDiv.classList.add(['letter-container'])
+        letterDiv.classList.add(['p-3'])
         var letterSpan = document.createElement('span');
         letterSpan.setAttribute('name', upperLetter);
         letterSpan.innerHTML = letter;
-        letterSpan.classList.add(['hide-letter']);
+        letterSpan.classList.add(['hide-letter']);  //using class to hide display of letters
         var underscoreSpan = document.createElement('span');
-        underscoreSpan.innerHTML = '_';
+        underscoreSpan.innerHTML = '_'; //creating "_" to display under letters
         underscoreSpan.classList.add(['under-letter'])
         letterDiv.appendChild(letterSpan);
         letterDiv.appendChild(underscoreSpan);
@@ -76,6 +77,7 @@ function guessLetter(ev) {
     checkGameStatus();
 }
 
+//Determine if game is over
 function checkGameStatus() {
     var gameWon = true;
     var answerKeys = Object.keys(answerLetters);
@@ -85,20 +87,16 @@ function checkGameStatus() {
             break;
         }
     }
+    //I word is completed
     if (gameWon) {
         var winner = document.getElementById('winner');
             winner.style.display= "block";
     }
+    //If user runs out of guess
+    else if (guessWrong == maxGuesses) {
+        var loser = document.getElementById('loser');
+            loser.style.display= "block";
+    }
     var gameLost = true;
 }
     
-
-            //if "#answer" letters hidden == 0, display "Win!", winCount++ 
-        //else if guessLetter =/= letter in "#answer", change image
-            //after last image count, "Lose :(", lossCount++
-
-//Create win counter to keep track of wins
-
-//Create losses counter to keep track of losses
-
-//If time, create "Play again button that resets game without refreshing screen"
